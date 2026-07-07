@@ -1,0 +1,18 @@
+## Plan: Normalize product image presentation
+
+Make all 6 product images appear visually uniform by giving each card's image area a clean white background, consistent aspect ratio, and consistent padding so the products float at the same apparent size.
+
+### Change (single file: `src/routes/index.tsx`)
+
+In the routine card markup, update the image container:
+
+- Background: swap `bg-accent/40` → `bg-white` (with a subtle `ring-1 ring-border/40` so the white card still reads against the off-white page).
+- Aspect ratio: keep `aspect-[4/3]` (already uniform).
+- Image: keep `object-contain`, bump padding to `p-10 md:p-14` so smaller products (brush, oil bottles) don't look tiny next to the bonnets, and add `mx-auto max-h-full max-w-full` to lock perceived size.
+
+That's it — no per-product overrides, no asset re-edits. Same container + same padding + white bg = uniform look.
+
+### Not doing
+
+- Not re-generating or editing the uploaded product photos (they already have white/near-white backgrounds).
+- No layout, copy, or routing changes.
